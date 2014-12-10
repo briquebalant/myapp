@@ -45,6 +45,10 @@ app.get('/:name', function (req, res) { // si la requête get client est 'x' on 
     res.render('users', storage.getItem(req.params.name)); // une réponse qui sera la page html users avec les infos de name dans le storage
 });
 
+app.get('/:somme', function (req, res) { // si la requête get client est 'x' on déclanche :
+    res.render('somme', storage.length('firstname')); // une réponse qui sera la page html somme avec le nombre d'inscrit
+});
+
 // Lancement de serveur
 var server = app.listen(3000, function () {
 
