@@ -28,9 +28,15 @@ app.get('/', function (req, res) {
     res.render('index', { users_list: storage.getItem('users_list') }); // La pierre gravée est renvoyée au client ss le nom users_list, permettant 
 });
 
+/* 
+app.get('/:somme', function (req, res) { // si la requête get client est 'x' on déclanche :
+    res.render('somme', {users_list: users_list, users_count: users_list.length()}); // une réponse qui sera la page html somme avec les var necessaires
+*/
+
 app.get('/users/new', function (req, res) { // Si requête GET url /x alors :
     res.render('formulaire'); // On répond à la requete par : ('y')
 });
+
 app.post('/users/new', function (req, res) { // Si requête POST url /x alors (à savoir <form méthode="post"></form>) :
     var title = req.body.firstname.trim(); // On défini que title sera firstane trimé (--> corrige les espaces autour en moins)
     req.body.firstname = req.body.firstname.trim(); // mon firstname = mon firsname trimé
@@ -43,10 +49,6 @@ app.post('/users/new', function (req, res) { // Si requête POST url /x alors (�
 
 app.get('/:name', function (req, res) { // si la requête get client est 'x' on déclanche :
     res.render('users', storage.getItem(req.params.name)); // une réponse qui sera la page html users avec les infos de name dans le storage
-});
-
-app.get('/:somme', function (req, res) { // si la requête get client est 'x' on déclanche :
-    res.render('somme', storage.length('firstname')); // une réponse qui sera la page html somme avec le nombre d'inscrit
 });
 
 // Lancement de serveur
