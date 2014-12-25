@@ -28,21 +28,13 @@ app.get('/', function (req, res) {
     res.render('index', { users_list: storage.getItem('users_list') }); // La pierre gravée est renvoyée au client ss le nom users_list, permettant
 });
 
-<<<<<<< HEAD
-/*
-app.get('/somme', function (req, res) { // si la requête get client est 'x' on déclanche :
-    res.render('somme', { users_list: users_list, users_count: users_list.length() }); // une réponse qui sera la page html somme avec les var necessaires
-*/
-=======
-
-app.get('/somme', function (req, res) { // si la requête get client est 'x' on déclanche :
+app.get('/somme', function (req, res) { // si la requête get client est '/somme' on déclanche :
     var users_list = storage.getItem('users_list');
     res.render('somme', {
-      users_list: users_list,
-      users_count: users_list.length
-    }); // une réponse qui sera la page html somme avec les var necessaires
-});
->>>>>>> bcd8d2d858d91cab035aca1a3011ed1dc7f98e83
+        users_list: users_list,
+        users_count: users_list.length 
+    });
+}); // une réponse qui sera la page html somme avec les var necessaires
 
 app.get('/users/new', function (req, res) { // Si requête GET url /x alors :
     res.render('formulaire'); // On répond à la requete par : ('y')
