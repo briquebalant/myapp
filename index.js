@@ -28,9 +28,9 @@ app.get('/', function (req, res) {
     res.render('index', { users_list: storage.getItem('users_list') }); // La pierre gravée est renvoyée au client ss le nom users_list, permettant 
 });
 
-/* 
-app.get('/:somme', function (req, res) { // si la requête get client est 'x' on déclanche :
-    res.render('somme', {users_list: users_list, users_count: users_list.length()}); // une réponse qui sera la page html somme avec les var necessaires
+/*
+app.get('/somme', function (req, res) { // si la requête get client est 'x' on déclanche :
+    res.render('somme', { users_list: users_list, users_count: users_list.length() }); // une réponse qui sera la page html somme avec les var necessaires
 */
 
 app.get('/users/new', function (req, res) { // Si requête GET url /x alors :
