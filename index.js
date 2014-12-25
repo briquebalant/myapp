@@ -25,13 +25,24 @@ function addToUserList(title) { // on déclare la fonction addToUserList qui à 
 
 // url
 app.get('/', function (req, res) {
-    res.render('index', { users_list: storage.getItem('users_list') }); // La pierre gravée est renvoyée au client ss le nom users_list, permettant 
+    res.render('index', { users_list: storage.getItem('users_list') }); // La pierre gravée est renvoyée au client ss le nom users_list, permettant
 });
 
+<<<<<<< HEAD
 /*
 app.get('/somme', function (req, res) { // si la requête get client est 'x' on déclanche :
     res.render('somme', { users_list: users_list, users_count: users_list.length() }); // une réponse qui sera la page html somme avec les var necessaires
 */
+=======
+
+app.get('/somme', function (req, res) { // si la requête get client est 'x' on déclanche :
+    var users_list = storage.getItem('users_list');
+    res.render('somme', {
+      users_list: users_list,
+      users_count: users_list.length
+    }); // une réponse qui sera la page html somme avec les var necessaires
+});
+>>>>>>> bcd8d2d858d91cab035aca1a3011ed1dc7f98e83
 
 app.get('/users/new', function (req, res) { // Si requête GET url /x alors :
     res.render('formulaire'); // On répond à la requete par : ('y')
@@ -44,7 +55,7 @@ app.post('/users/new', function (req, res) { // Si requête POST url /x alors (�
     req.body.city = req.body.city.trim(); // mon city = mon city trimé
     storage.setItem(title, req.body); // On va stoquer dans storage (avec pour clef: la var title qui est le firstname trimé) l'ensemble des infos du form
     addToUserList(title); // on déclanche la fonction ligne 21 avec la pierre pour graver ses infos et remettre la pierre au bon endroit
-    res.render('users', storage.getItem(title)); // On viens afficher en réponse au client users en lui retournant les informations correspondant à la clef  
+    res.render('users', storage.getItem(title)); // On viens afficher en réponse au client users en lui retournant les informations correspondant à la clef
 });
 
 app.get('/:name', function (req, res) { // si la requête get client est 'x' on déclanche :
